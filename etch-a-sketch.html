@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Etch-a-Sketch</title>
+        <meta charset="UTF-8">
+       
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <h1>Etch-a-Sketch</h1>
+
+        <div class="gridContainer">
+
+        </div>
+
+    </body>
+
+    <script>
+
+        const gridContainer = document.querySelector('.gridContainer');
+
+        function makegrid(rowNum, colNum){
+
+            gridContainer.style.setProperty('--gridRows', rowNum);
+            gridContainer.style.setProperty('--gridCol', colNum);
+
+            for (i=0; i<(rowNum*colNum); i++){
+            let cell = document.createElement('div');
+            cell.textContent = 'I\'m a cell';
+            cell.classList.add('cell');
+            gridContainer.appendChild(cell);
+            }
+
+        }/*
+
+        I tried using flexbox to create grid, but couldn't work out how to make sure columns and rows were the correct number.
+        had to look of stack overflow, this is where .style.setPropert() comes in, allows to create an accessible var to retrieve in css,
+        reads 'varname', value
+
+        in the css for grid rows and columns attribrute use repeat(var()) but need , 1fr, whatever that is!
+
+        
+        */
+
+        makegrid(16,16);
+
+    </script>
+
+
+</html>

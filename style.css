@@ -1,0 +1,35 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+
+.gridContainer{
+   display: grid;
+   grid-gap: 0px;
+   grid-template-rows: repeat(var(--gridRows), 1fr);
+   grid-template-columns: repeat(var(--gridCol), 1fr);
+    
+    
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+    height: 100%;
+}
+
+
+     
+   
+    
+    
+
+
+.cell{
+    margin: 0px;
+    min-height: 20px;
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+
+}
