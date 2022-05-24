@@ -18,6 +18,7 @@
     <script>
 
         const gridContainer = document.querySelector('.gridContainer');
+        let cell
 
         function makegrid(rowNum, colNum){
 
@@ -25,13 +26,15 @@
             gridContainer.style.setProperty('--gridCol', colNum);
 
             for (i=0; i<(rowNum*colNum); i++){
-            let cell = document.createElement('div');
-            cell.textContent = 'I\'m a cell';
+            cell = document.createElement('div');
+           // cell.textContent = 'I\'m a cell';
             cell.classList.add('cell');
             gridContainer.appendChild(cell);
             }
-
+            //not squares, doesn't fill whole page. //css needs the width and height to be the same and declared for so that fr works, to make squares
         }/*
+
+
 
         I tried using flexbox to create grid, but couldn't work out how to make sure columns and rows were the correct number.
         had to look of stack overflow, this is where .style.setPropert() comes in, allows to create an accessible var to retrieve in css,
@@ -39,10 +42,25 @@
 
         in the css for grid rows and columns attribrute use repeat(var()) but need , 1fr, whatever that is!
 
-        
+        quite like this
+        for (c = 0; c < (rows * cols); c++) {
+        let cell = document.createElement("div");
+        cell.innerText = (c + 1);
         */
 
         makegrid(16,16);
+
+        const cells = Array.from(document.querySelectorAll('.cell'));
+        cells.forEach(cell => cell.addEventListener('mouseover', changeCellColour)); //just changes the bottom cell, none of the others
+            
+            
+
+        function changeCellColour(){
+
+            cell.classList.add('hoover');
+            
+
+        }
 
     </script>
 
