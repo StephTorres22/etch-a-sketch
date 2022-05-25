@@ -7,8 +7,16 @@
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
-        <h1>Etch-a-Sketch</h1>
+        <div class="top">
+            
+            <h1>Etch-a-Sketch</h1>
 
+            <button class='clear'>Clear sketch</button>
+    
+            <button class="newGrid">New grid</button>
+
+        </div>
+        
         <div class="gridContainer">
 
         </div>
@@ -27,31 +35,10 @@
 
             for (i=0; i<(rowNum*colNum); i++){
             cell = document.createElement('div');
-           // cell.textContent = 'I\'m a cell';
-         
-            cell.classList.add('cell');
-            
-           //  ;//also only does the last one
+            cell.classList.add('cell');  
             gridContainer.appendChild(cell);
-            
-            
             }
-            //not squares, doesn't fill whole page. //css needs the width and height to be the same and declared for so that fr works, to make squares
-        }/*
-
-
-
-        I tried using flexbox to create grid, but couldn't work out how to make sure columns and rows were the correct number.
-        had to look of stack overflow, this is where .style.setPropert() comes in, allows to create an accessible var to retrieve in css,
-        reads 'varname', value
-
-        in the css for grid rows and columns attribrute use repeat(var()) but need , 1fr, whatever that is!
-
-        quite like this
-        for (c = 0; c < (rows * cols); c++) {
-        let cell = document.createElement("div");
-        cell.innerText = (c + 1);
-        */
+        }
 
         makegrid(16,16);
 
@@ -60,6 +47,15 @@
            cell.classList.add('hover');
        })); //makes an array from each individual cell so that each cell can be iterated over and have an eventlistener added to it, plus function.
        
+       /*
+       Things to do:
+
+       -Implement restart button, clears what has been traced, prompts user for dimension of new grid. Or two buttons, one clear all, one new grid
+
+       -Create prompt at start/onload, for user to choose size of grid, 0 - 100.
+       i.e rowNum = prompt('Choose a number between 1-100 to make a grid.').parseToInt, let colNum = rowNum. only need to ask for one input then.
+       Need to make exclusions, 2 <= rowNum <= 100. 
+       */ 
             
             
 

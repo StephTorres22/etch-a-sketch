@@ -2,9 +2,14 @@ body{
     display: flex;
     flex-direction: column;
     
-    
-    
     }
+
+.top{
+
+    margin-bottom: 20px;
+}
+
+
 
 
 .gridContainer{
