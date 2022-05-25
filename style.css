@@ -8,6 +8,7 @@ body{
 
 
 .gridContainer{
+    
    flex: 1 0 auto;
    display: grid;
    grid-gap: 0px;
@@ -24,9 +25,10 @@ body{
     
 }
 
-.hoover{
+.hover{
     background-color: yellow;
 }
+
 
 
      

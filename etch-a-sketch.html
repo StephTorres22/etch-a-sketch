@@ -28,8 +28,13 @@
             for (i=0; i<(rowNum*colNum); i++){
             cell = document.createElement('div');
            // cell.textContent = 'I\'m a cell';
+         
             cell.classList.add('cell');
+            
+           //  ;//also only does the last one
             gridContainer.appendChild(cell);
+            
+            
             }
             //not squares, doesn't fill whole page. //css needs the width and height to be the same and declared for so that fr works, to make squares
         }/*
@@ -50,18 +55,15 @@
 
         makegrid(16,16);
 
-        const cells = Array.from(document.querySelectorAll('.cell'));
-        cells.forEach(cell => cell.addEventListener('mouseover', changeCellColour)); //just changes the bottom cell, none of the others
+       const cells = Array.from(document.querySelectorAll('.cell'));
+       cells.forEach(cell => cell.addEventListener('mouseover', function(){
+           cell.classList.add('hover');
+       })); //makes an array from each individual cell so that each cell can be iterated over and have an eventlistener added to it, plus function.
+       
             
             
 
-        function changeCellColour(){
-
-            cell.classList.add('hoover');
-            
-
-        }
-
+       
     </script>
 
 
