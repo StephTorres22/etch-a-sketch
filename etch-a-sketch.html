@@ -19,11 +19,16 @@
         
         <div class="gridContainer">
 
+        
+
         </div>
 
     </body>
 
     <script>
+
+        const clearButton = document.querySelector('.clear');
+        const newGridButton = document.querySelector('.newGrid');
 
         const gridContainer = document.querySelector('.gridContainer');
         let cell
@@ -40,12 +45,17 @@
             }
         }
 
-        makegrid(16,16);
+        makegrid(65,65);//a few bugs, spills over, don't want that. width is constrained. a few options. minmax(0, 1fr), keeps everything square. 
+        //else allow to overflow, gives larger sketch grid.
 
        const cells = Array.from(document.querySelectorAll('.cell'));
        cells.forEach(cell => cell.addEventListener('mouseover', function(){
            cell.classList.add('hover');
        })); //makes an array from each individual cell so that each cell can be iterated over and have an eventlistener added to it, plus function.
+
+       clearButton.addEventListener('click', function(){
+           cells.forEach(cell => cell.classList.remove('hover'))
+       })
        
        /*
        Things to do:
@@ -55,6 +65,8 @@
        -Create prompt at start/onload, for user to choose size of grid, 0 - 100.
        i.e rowNum = prompt('Choose a number between 1-100 to make a grid.').parseToInt, let colNum = rowNum. only need to ask for one input then.
        Need to make exclusions, 2 <= rowNum <= 100. 
+
+       -Hold space to stop sketching, i.e eventlistener on space disables hover class being added to cells.
        */ 
             
             
