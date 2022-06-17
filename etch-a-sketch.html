@@ -32,6 +32,8 @@
 
         const gridContainer = document.querySelector('.gridContainer');
         let cell
+        let rowNum = prompt('Choose how many rows and columns you\'d like the grid to have, 2-100')
+        let colNum = rowNum;
 
         function makegrid(rowNum, colNum){
 
@@ -45,8 +47,10 @@
             }
         }
 
-        makegrid(65,65);//a few bugs, spills over, don't want that. width is constrained. a few options. minmax(0, 1fr), keeps everything square. 
+        makegrid(rowNum, colNum);//a few bugs, spills over, don't want that. width is constrained. a few options. minmax(0, 1fr), keeps everything square. 
         //else allow to overflow, gives larger sketch grid.
+
+        //above 40 squares, squares double over each other and stop being square. why?
 
        const cells = Array.from(document.querySelectorAll('.cell'));
        cells.forEach(cell => cell.addEventListener('mouseover', function(){
@@ -56,6 +60,25 @@
        clearButton.addEventListener('click', function(){
            cells.forEach(cell => cell.classList.remove('hover'))
        })
+
+       newGridButton.addEventListener('click', function(){
+
+        
+        let rowNum = prompt('Choose how many rows and columns you\'d like the grid to have, 2-100');
+        let colNum = rowNum;
+        makegrid(rowNum, colNum);
+
+        //doesn't quite set everything to 0, and when new grid is called, overspill can then happen
+
+       })
+
+       //anything over rownNum = 40 cells start doubling over, needed, min-height and min-width set to auto in css! ffs!
+
+       
+
+
+       
+
        
        /*
        Things to do:

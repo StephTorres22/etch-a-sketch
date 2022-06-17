@@ -18,13 +18,14 @@ body{
    display: grid;
    grid-gap: 0px;
    grid-template-rows: repeat(var(--gridRows), minmax(0, 1fr));
-   grid-template-columns: repeat(var(--gridCol), 1fr);
+   grid-template-columns: repeat(var(--gridCol), minmax(0, 1fr));
    
     
     
     
-    max-height: 40vw;
-    width: 50vw;
+    height: 800px;
+    width: 800px;
+    min-width: 0;
     min-height: 0;
    
     
@@ -32,13 +33,7 @@ body{
 
 .hover{
     background-color: yellow;
-}
-
-
-
-     
-   
-    
+} 
     
 
 
@@ -48,5 +43,13 @@ body{
     border: 2px;
     border-color: black;
     border-style: solid;
+    overflow: hidden;
+    min-width: auto;
+    min-height: auto;
+    
 
 }
+
+
+
+
