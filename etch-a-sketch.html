@@ -47,32 +47,50 @@
             }
         }
 
-        makegrid(rowNum, colNum);//a few bugs, spills over, don't want that. width is constrained. a few options. minmax(0, 1fr), keeps everything square. 
-        //else allow to overflow, gives larger sketch grid.
-
-        //above 40 squares, squares double over each other and stop being square. why?
+        makegrid(rowNum, colNum);
 
        const cells = Array.from(document.querySelectorAll('.cell'));
        cells.forEach(cell => cell.addEventListener('mouseover', function(){
            cell.classList.add('hover');
        })); //makes an array from each individual cell so that each cell can be iterated over and have an eventlistener added to it, plus function.
 
-       clearButton.addEventListener('click', function(){
-           cells.forEach(cell => cell.classList.remove('hover'))
-       })
+       
+
+
 
        newGridButton.addEventListener('click', function(){
 
+        while (gridContainer.firstChild){
+            gridContainer.removeChild(gridContainer.firstChild)
+        }//sick little bit of code. removes all the child nodes of an element.
+
+        rowNum = prompt('Choose how many rows and columns you\'d like the grid to have, 2-100');
+        colNum = rowNum;
+        makegrid(rowNum, colNum);//creates new grid using new prompt value for rowNum
+
+        const newCells = Array.from(document.querySelectorAll('.cell'));
+
+        newCells.forEach(cell => cell.addEventListener('mouseover', function(){
+           cell.classList.add('hover');
+       }));// should add the hover class to mouseover, not wanting to do it though, possibly because cells is an array from the first grid.
+
+       //const cells only available to first grid, newCells available to all subsequent grids.
+       //clear button no longer works, also unable to access newCells, not in scope
+       //possible use a similar while loop to access attribrute on each child. would be cleaner. 
+       //look tomorrow
+       
         
-        let rowNum = prompt('Choose how many rows and columns you\'d like the grid to have, 2-100');
-        let colNum = rowNum;
-        makegrid(rowNum, colNum);
 
-        //doesn't quite set everything to 0, and when new grid is called, overspill can then happen
-
+        
        })
 
-       //anything over rownNum = 40 cells start doubling over, needed, min-height and min-width set to auto in css! ffs!
+       clearButton.addEventListener('click', function(){
+           cells.forEach(cell => cell.classList.remove('hover'));
+           
+           const clearCells = Array.from(document.querySelectorAll('.cell'))
+           clearCells.forEach(cell => cell.classList.remove('hover') );
+       })
+
 
        
 
@@ -89,7 +107,7 @@
        i.e rowNum = prompt('Choose a number between 1-100 to make a grid.').parseToInt, let colNum = rowNum. only need to ask for one input then.
        Need to make exclusions, 2 <= rowNum <= 100. 
 
-       -Hold space to stop sketching, i.e eventlistener on space disables hover class being added to cells.
+       -Hold space to stop sketching, i.e eventlistener on space disables hover class being added to cells. there;s a click and drag listener.
        */ 
             
             
